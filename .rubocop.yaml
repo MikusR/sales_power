@@ -1,0 +1,372 @@
+inherit_from:  
+  # v1.35
+  - https://raw.githubusercontent.com/standardrb/standard/689fb2c28259223bf7a87b16aa3637db833068d6/config/base.yml
+
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:  
+  TargetRubyVersion: 3.2
+  SuggestExtensions: false
+
+Layout/ClassStructure:
+  Enabled: true
+  ExpectedOrder:
+    - module_inclusion
+    - constants
+    - class_attributes
+    - public_attribute_macros
+    - enums
+    - association
+    - nested_attributes
+    - public_delegate
+    - validations
+    - callbacks
+    - scopes
+    - concerning
+    - public_class_methods
+    - initializer
+    - public_methods
+    - protected_attribute_macros
+    - protected_methods
+    - private_attribute_macros
+    - private_delegate
+    - private_methods
+  Categories:
+    attribute_macros:
+      - attr_accessor
+      - attr_reader
+      - attr_writer
+    class_attributes:
+      - class_attribute
+    concerning:
+      - concerning
+    enums:
+      - enum
+    nested_attributes:
+      - accepts_nested_attributes_for
+    validations:
+      - validate
+      - validates
+    callbacks:
+      - after_initialize
+      - before_validation
+      - after_validation
+      - before_save
+      - around_save
+      - before_create
+      - around_create
+      - after_create
+      - before_update
+      - around_update
+      - after_update
+      - before_destroy
+      - around_destroy
+      - after_destroy
+      - after_save
+      - after_commit
+      - after_rollback
+      - after_find
+      - after_touch
+    scopes:
+      - scope
+
+Layout/DotPosition:
+  EnforcedStyle: leading    
+
+Layout/ArgumentAlignment:
+  Enabled: true
+  EnforcedStyle: with_fixed_indentation
+
+Layout/ArrayAlignment:
+  Enabled: true
+  EnforcedStyle: with_fixed_indentation  
+
+Layout/ParameterAlignment:
+  Enabled: true
+  EnforcedStyle: with_fixed_indentation
+  IndentationWidth: ~  
+
+Layout/ExtraSpacing:
+  Enabled: true
+  AllowForAlignment: false
+  AllowBeforeTrailingComments: true
+  ForceEqualSignAlignment: false
+
+Layout/SpaceAroundOperators:
+  AllowForAlignment: false
+  EnforcedStyleForExponentOperator: no_space    
+
+Layout/FirstArgumentIndentation:
+  Enabled: true
+  EnforcedStyle: consistent
+  IndentationWidth: ~
+
+Layout/FirstArrayElementIndentation:
+  Enabled: true
+  EnforcedStyle: consistent
+  IndentationWidth: ~
+
+Layout/FirstArrayElementLineBreak:
+  Enabled: true
+
+Layout/FirstHashElementIndentation:
+  Enabled: true
+  EnforcedStyle: consistent
+  IndentationWidth: ~
+
+Layout/FirstHashElementLineBreak:
+  Enabled: true
+
+Layout/FirstMethodArgumentLineBreak:
+  Enabled: true
+
+Layout/FirstMethodParameterLineBreak:
+  Enabled: true
+
+Layout/FirstParameterIndentation:
+  Enabled: true
+
+Layout/HashAlignment:
+  Enabled: true
+  EnforcedHashRocketStyle: key
+  EnforcedColonStyle: key
+  EnforcedLastArgumentHashStyle: always_inspect  
+
+Style/PercentLiteralDelimiters:
+  Enabled: true
+  PreferredDelimiters:
+    '%r': "''"
+
+Style/TrailingCommaInArguments:
+  Enabled: true
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/TrailingCommaInArrayLiteral:
+  Enabled: true
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/TrailingCommaInHashLiteral:
+  Enabled: true
+  EnforcedStyleForMultiline: consistent_comma  
+
+Rails/ActionControllerFlashBeforeRender: # new in 2.16
+  Enabled: true
+Rails/ActionControllerTestCase: # new in 2.14
+  Enabled: true
+Rails/ActionOrder: # new in 2.17
+  Enabled: true
+Rails/ActiveRecordCallbacksOrder: # new in 2.7
+  Enabled: true
+Rails/ActiveSupportOnLoad: # new in 2.16
+  Enabled: true
+Rails/AddColumnIndex: # new in 2.11
+  Enabled: true
+Rails/AfterCommitOverride: # new in 2.8
+  Enabled: true
+Rails/AttributeDefaultBlockValue: # new in 2.9
+  Enabled: true
+Rails/CompactBlank: # new in 2.13
+  Enabled: true
+Rails/DangerousColumnNames: # new in 2.21
+  Enabled: true
+Rails/DeprecatedActiveModelErrorsMethods: # new in 2.14
+  Enabled: true
+Rails/DotSeparatedKeys: # new in 2.15
+  Enabled: true
+Rails/DuplicateAssociation: # new in 2.14
+  Enabled: true
+Rails/DuplicateScope: # new in 2.14
+  Enabled: true
+Rails/DurationArithmetic: # new in 2.13
+  Enabled: true
+Rails/EagerEvaluationLogMessage: # new in 2.11
+  Enabled: true
+Rails/EnvLocal: # new in 2.22
+  Enabled: true
+Rails/ExpandedDateRange: # new in 2.11
+  Enabled: true
+Rails/FindById: # new in 2.7
+  Enabled: true
+Rails/FreezeTime: # new in 2.16
+  Enabled: true
+Rails/I18nLazyLookup: # new in 2.14
+  Enabled: true
+Rails/I18nLocaleAssignment: # new in 2.11
+  Enabled: true
+Rails/I18nLocaleTexts: # new in 2.14
+  Enabled: true
+Rails/IgnoredColumnsAssignment: # new in 2.17
+  Enabled: true
+Rails/Inquiry: # new in 2.7
+  Enabled: true
+Rails/MailerName: # new in 2.7
+  Enabled: true
+Rails/MatchRoute: # new in 2.7
+  Enabled: true
+Rails/MigrationClassName: # new in 2.14
+  Enabled: true
+Rails/NegateInclude: # new in 2.7
+  Enabled: true
+Rails/Pluck: # new in 2.7
+  Enabled: true
+Rails/PluckInWhere: # new in 2.7
+  Enabled: true
+Rails/RedundantActiveRecordAllMethod: # new in 2.21
+  Enabled: true
+Rails/RedundantPresenceValidationOnBelongsTo: # new in 2.13
+  Enabled: true
+Rails/RedundantTravelBack: # new in 2.12
+  Enabled: true
+Rails/RenderInline: # new in 2.7
+  Enabled: true
+Rails/RenderPlainText: # new in 2.7
+  Enabled: true
+Rails/ResponseParsedBody: # new in 2.18
+  Enabled: true
+Rails/RootJoinChain: # new in 2.13
+  Enabled: true
+Rails/RootPathnameMethods: # new in 2.16
+  Enabled: true
+Rails/RootPublicPath: # new in 2.15
+  Enabled: true
+Rails/SelectMap: # new in 2.21
+  Enabled: true
+Rails/ShortI18n: # new in 2.7
+  Enabled: true
+Rails/SquishedSQLHeredocs: # new in 2.8
+  Enabled: true
+Rails/StripHeredoc: # new in 2.15
+  Enabled: true
+Rails/ThreeStateBooleanColumn: # new in 2.19
+  Enabled: true
+Rails/TimeZoneAssignment: # new in 2.10
+  Enabled: true
+Rails/ToFormattedS: # new in 2.15
+  Enabled: true
+Rails/ToSWithArgument: # new in 2.16
+  Enabled: true
+Rails/TopLevelHashWithIndifferentAccess: # new in 2.16
+  Enabled: true
+Rails/TransactionExitStatement: # new in 2.14
+  Enabled: true
+Rails/UnusedIgnoredColumns: # new in 2.11
+  Enabled: true
+Rails/UnusedRenderContent: # new in 2.21
+  Enabled: true
+Rails/WhereEquals: # new in 2.9
+  Enabled: true
+Rails/WhereExists: # new in 2.7
+  Enabled: true
+Rails/WhereMissing: # new in 2.16
+  Enabled: true
+Rails/WhereNot: # new in 2.8
+  Enabled: true
+Rails/WhereNotWithMultipleConditions: # new in 2.17
+  Enabled: true
+Capybara/ClickLinkOrButtonStyle: # new in 2.19
+  Enabled: true
+Capybara/MatchStyle: # new in 2.17
+  Enabled: true
+Capybara/NegationMatcher: # new in 2.14
+  Enabled: true
+Capybara/RedundantWithinFind: # new in 2.20
+  Enabled: true
+Capybara/SpecificActions: # new in 2.14
+  Enabled: true
+Capybara/SpecificFinders: # new in 2.13
+  Enabled: true
+Capybara/SpecificMatcher: # new in 2.12
+  Enabled: true
+Capybara/RSpec/HaveSelector: # new in 2.19
+  Enabled: true
+Capybara/RSpec/PredicateMatcher: # new in 2.19
+  Enabled: true
+FactoryBot/AssociationStyle: # new in 2.23
+  Enabled: true
+FactoryBot/ConsistentParenthesesStyle: # new in 2.14
+  Enabled: true
+FactoryBot/ExcessiveCreateList: # new in 2.25
+  Enabled: true
+FactoryBot/FactoryAssociationWithStrategy: # new in 2.23
+  Enabled: true
+FactoryBot/FactoryNameStyle: # new in 2.16
+  Enabled: true
+FactoryBot/IdSequence: # new in 2.24
+  Enabled: true
+FactoryBot/RedundantFactoryOption: # new in 2.23
+  Enabled: true
+FactoryBot/SyntaxMethods: # new in 2.7
+  Enabled: true
+RSpecRails/AvoidSetupHook: # new in 2.4
+  Enabled: true
+RSpecRails/HaveHttpStatus: # new in 2.12
+  Enabled: true
+RSpecRails/InferredSpecType: # new in 2.14
+  Enabled: true
+RSpecRails/MinitestAssertions: # new in 2.17
+  Enabled: true
+RSpecRails/NegationBeValid: # new in 2.23
+  Enabled: true
+RSpecRails/TravelAround: # new in 2.19
+  Enabled: true
+RSpec/BeEmpty: # new in 2.20
+  Enabled: true
+RSpec/BeEq: # new in 2.9.0
+  Enabled: true
+RSpec/BeNil: # new in 2.9.0
+  Enabled: true
+RSpec/ChangeByZero: # new in 2.11
+  Enabled: true
+RSpec/ContainExactly: # new in 2.19
+  Enabled: true
+RSpec/DuplicatedMetadata: # new in 2.16
+  Enabled: true
+RSpec/EmptyMetadata: # new in 2.24
+  Enabled: true
+RSpec/EmptyOutput: # new in 2.29
+  Enabled: true
+RSpec/Eq: # new in 2.24
+  Enabled: true
+RSpec/ExcessiveDocstringSpacing: # new in 2.5
+  Enabled: true
+RSpec/IdenticalEqualityAssertion: # new in 2.4
+  Enabled: true
+RSpec/IndexedLet: # new in 2.20
+  Enabled: true
+RSpec/IsExpectedSpecify: # new in 2.27
+  Enabled: true
+RSpec/MatchArray: # new in 2.19
+  Enabled: true
+RSpec/MetadataStyle: # new in 2.24
+  Enabled: true
+RSpec/NoExpectationExample: # new in 2.13
+  Enabled: true
+RSpec/PendingWithoutReason: # new in 2.16
+  Enabled: true
+RSpec/ReceiveMessages: # new in 2.23
+  Enabled: true
+RSpec/RedundantAround: # new in 2.19
+  Enabled: true
+RSpec/RedundantPredicateMatcher: # new in 2.26
+  Enabled: true
+RSpec/RemoveConst: # new in 2.26
+  Enabled: true
+RSpec/RepeatedSubjectCall: # new in 2.27
+  Enabled: true
+RSpec/SkipBlockInsideExample: # new in 2.19
+  Enabled: true
+RSpec/SortMetadata: # new in 2.14
+  Enabled: true
+RSpec/SpecFilePathFormat: # new in 2.24
+  Enabled: true
+RSpec/SpecFilePathSuffix: # new in 2.24
+  Enabled: true
+RSpec/SubjectDeclaration: # new in 2.5
+  Enabled: true
+RSpec/UndescriptiveLiteralsDescription: # new in 2.29
+  Enabled: true
+RSpec/VerifiedDoubleReference: # new in 2.10.0
+  Enabled: true  
+  
