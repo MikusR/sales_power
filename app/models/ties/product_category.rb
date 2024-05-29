@@ -3,4 +3,6 @@ class Ties::ProductCategory < ApplicationRecord
 
   belongs_to :product, inverse_of: :ties_to_categories
   belongs_to :category, inverse_of: :ties_to_products
+
+  
 end
