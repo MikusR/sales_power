@@ -37,16 +37,26 @@ gem 'bootsnap', require: false
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem "rack-cors"
-
+gem 'sorbet-runtime'
 group :development do
-  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  # gem "spring"
+  gem 'sorbet'
+end
+
+group :test do
+  gem 'factory_bot_rails', '~> 6.4' # allows `create(:product)` etc. easy setup
+  gem 'rails-controller-testing', '~> 1.0' # allows asserting `assigns` in request specs
+  gem 'rspec-rails', '~> 6.1' # CLI spec runner. `rspec spec/models/`
+  gem 'shoulda-matchers', '~> 6.2' # allows `expect(model_instance).to have_many(:assocs)`
+  gem 'simplecov', '~> 0.22', require: false # `COVERAGE=true rspec` to get spec coverage report
+  gem 'timecop' # allows `Timecop.freeze("2024-05-20 12:00")`
+  gem 'webmock', '~> 3.23', require: false # allows `stub_request(:any, "www.example.com")`
 end
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
-  gem 'rubocop', '~> 1.64', require: false
-  gem 'rubocop-rails', '~> 2.24', require: false
-  gem 'rubocop-rspec', '~> 2.29', require: false
+  gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
+  gem 'tapioca', require: false
 end
