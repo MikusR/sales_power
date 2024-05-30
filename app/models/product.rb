@@ -37,7 +37,7 @@ class Product < ApplicationRecord
   end
 
   def validate_clothing_weight
-    return unless sku.match?('clothing')
+    return unless sku.to_s.match?('clothing')
     return if weight < 1000
 
     errors.add(:weight, :clothing_too_heavy)

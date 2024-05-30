@@ -6,6 +6,8 @@
 
 # Ignore bundler config.
 /.bundle
+/rubocop/*
+/coverage/*
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
@@ -34,3 +36,6 @@
 
 #ignore the env
 .env
+
+# ide
+.idea/
