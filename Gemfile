@@ -40,7 +40,6 @@ gem 'bootsnap', require: false
 
 group :test do
   gem 'factory_bot_rails', '~> 6.4' # allows `create(:product)` etc. easy setup
-  gem 'rails-controller-testing', '~> 1.0' # allows asserting `assigns` in request specs
   gem 'rspec-rails', '~> 6.1' # CLI spec runner. `rspec spec/models/`
   gem 'shoulda-matchers', '~> 6.2' # allows `expect(model_instance).to have_many(:assocs)`
   gem 'simplecov', '~> 0.22', require: false # `COVERAGE=true rspec` to get spec coverage report
