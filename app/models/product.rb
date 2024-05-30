@@ -3,6 +3,8 @@ class Product < ApplicationRecord
   has_many :categories, through: :ties_to_categories
   has_many :comments, as: :topic, inverse_of: :topic, dependent: :destroy
 
+  belongs_to :producer, inverse_of: :products, optional: false
+
   validates :name, :price, :stock_quantity, :sku, :weight, :rating, presence: true
   validates :name, uniqueness: true
   validates :description, length: { in: 15..600 }
