@@ -32,6 +32,11 @@ RSpec.configure do |config|
   config.disable_monkey_patching!
 end
 
+RSpec::Matchers.define_negated_matcher :not_change, :change
+RSpec::Matchers.define_negated_matcher :exclude, :include
+
+RSpec::Matchers.alias_matcher :contain, :include
+
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
     with.test_framework :rspec

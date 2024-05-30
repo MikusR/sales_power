@@ -9,6 +9,14 @@ FactoryBot.define do
     rating { 4 }
     listed { true }
 
+    trait :clothing do
+      sku { '4567-clothing' }
+    end
+
+    trait :gym_gear do
+      sku { '9000-gym-gear' }
+    end
+
     trait :out_of_stock do
       stock_quantity { 0 }
     end
