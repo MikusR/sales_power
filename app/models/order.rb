@@ -1,3 +1,4 @@
+# A central model and root of "Order with 1-N items" aggregate.
 class Order < ApplicationRecord
   enum status: { placed: 0, gathering: 1, shipped: 2, delivered: 3 }
 

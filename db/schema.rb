@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_30_101557) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_30_103337) do
   create_table "categories", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -19,6 +19,17 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_30_101557) do
     t.boolean "visible", default: false, null: false
     t.index ["name"], name: "index_categories_on_name"
     t.index ["visible"], name: "index_categories_on_visible"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "manager_id", null: false
+    t.string "topic_type", null: false
+    t.integer "topic_id", null: false
+    t.text "content", default: "", null: false
+    t.index ["manager_id"], name: "index_comments_on_manager_id"
+    t.index ["topic_type", "topic_id"], name: "idx_comment_topic"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -61,10 +72,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_30_101557) do
     t.integer "product_id", null: false
     t.integer "category_id", null: false
     t.index ["category_id"], name: "index_product_categories_on_category_id"
-    t.index ["product_id"], name: "index_product_categories_on_product_id"
+    t.index ["product_id", "category_id"], name: "product_category_uniq_idx", unique: true
   end
 
   create_table "products", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "name", default: "", null: false
     t.text "description", default: "", null: false
     t.decimal "price", precision: 10, scale: 2, null: false
@@ -73,13 +86,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_30_101557) do
     t.bigint "weight", null: false
     t.decimal "rating", precision: 2, scale: 1, null: false
     t.boolean "listed", default: false, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["listed"], name: "index_products_on_listed"
-    t.index ["name"], name: "index_products_on_name"
+    t.index ["name"], name: "index_products_on_name", unique: true
     t.index ["price"], name: "index_products_on_price"
     t.index ["rating"], name: "index_products_on_rating"
-    t.index ["sku"], name: "index_products_on_sku"
+    t.index ["sku"], name: "index_products_on_sku", unique: true
     t.index ["stock_quantity"], name: "index_products_on_stock_quantity"
     t.index ["weight"], name: "index_products_on_weight"
   end
@@ -92,6 +103,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_30_101557) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "comments", "managers"
   add_foreign_key "customers", "users"
   add_foreign_key "managers", "users"
   add_foreign_key "orders", "customers"

@@ -1,3 +1,4 @@
+# A generic representation of someone able to log in, identified by a unique email.
 class User < ApplicationRecord
   has_secure_password
 

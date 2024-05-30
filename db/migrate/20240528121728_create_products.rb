@@ -10,6 +10,7 @@ class CreateProducts < ActiveRecord::Migration[7.0]
     # Listed: Whether the product is shown to customers
 
     create_table :products do |t|
+      t.timestamps(null: false)
       t.string(:name, null: false, default: '')
       t.text(:description, null: false, default: '')
       t.decimal(:price, null: false, precision: 10, scale: 2)
@@ -18,7 +19,6 @@ class CreateProducts < ActiveRecord::Migration[7.0]
       t.bigint(:weight, null: false)
       t.decimal(:rating, null: false, precision: 2, scale: 1)
       t.boolean(:listed, null: false, default: false)
-      t.timestamps(null: false)
     end
 
     add_index(:products, :name) # if LIKE queries will be used, trigram index ftw
