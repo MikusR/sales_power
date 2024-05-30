@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_30_103337) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_30_112917) do
   create_table "categories", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -66,6 +66,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_30_103337) do
   create_table "producers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name", default: "", null: false
+    t.text "description", default: "", null: false
+    t.integer "founding_year", default: 1965, null: false
+    t.index ["name"], name: "index_producers_on_name", unique: true
   end
 
   create_table "product_categories", force: :cascade do |t|
@@ -81,14 +85,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_30_103337) do
     t.string "name", default: "", null: false
     t.text "description", default: "", null: false
     t.decimal "price", precision: 10, scale: 2, null: false
-    t.bigint "stock_quantity", default: 0, null: false
+    t.integer "stock_quantity", default: 0, null: false
     t.string "sku", null: false
-    t.bigint "weight", null: false
+    t.integer "weight", null: false
     t.decimal "rating", precision: 2, scale: 1, null: false
     t.boolean "listed", default: false, null: false
+    t.integer "producer_id", null: false
     t.index ["listed"], name: "index_products_on_listed"
     t.index ["name"], name: "index_products_on_name", unique: true
     t.index ["price"], name: "index_products_on_price"
+    t.index ["producer_id"], name: "index_products_on_producer_id"
     t.index ["rating"], name: "index_products_on_rating"
     t.index ["sku"], name: "index_products_on_sku", unique: true
     t.index ["stock_quantity"], name: "index_products_on_stock_quantity"
@@ -109,4 +115,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_30_103337) do
   add_foreign_key "orders", "customers"
   add_foreign_key "product_categories", "categories"
   add_foreign_key "product_categories", "products"
+  add_foreign_key "products", "producers"
 end

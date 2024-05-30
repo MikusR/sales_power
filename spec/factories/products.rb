@@ -8,6 +8,7 @@ FactoryBot.define do
     weight { 50 }
     rating { 4 }
     listed { true }
+    association :producer
 
     trait :clothing do
       sku { '4567-clothing' }
