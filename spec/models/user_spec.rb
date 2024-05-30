@@ -1,5 +1,10 @@
-require 'rails_helper'
+RSpec.describe User, instance_name: :user do
+  let(:user) { build_stubbed(:user) }
 
-RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'associations' do
+    it 'defines these associations', :aggregate_failues do
+      expect(user).to have_one(:manager)
+      expect(user).to have_one(:customer)
+    end
+  end
 end
