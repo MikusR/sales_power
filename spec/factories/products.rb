@@ -4,7 +4,8 @@ FactoryBot.define do
     description { 'Example description' }
     price { 15.67 }
     stock_quantity { 10 }
-    sku { '1234-electronics' }
+    sequence(:sku) { |n| "1234-product#{n}" }
+    # sku { '1234-electronics' }
     weight { 50 }
     rating { 4 }
     listed { true }

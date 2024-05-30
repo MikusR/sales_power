@@ -15,7 +15,7 @@ RSpec.describe Rails do
 
   describe 'timecop hook' do
     it 'freezes time at specified moment, nifty', freeze_at: '2024-01-01 12:01' do
-      expect(Time.current.to_s).to eq('2024-01-01 12:01:00 UTC')
+      expect(Time.current.to_s).to eq('2024-01-01 12:01:00 +0200')
     end
   end
 end
