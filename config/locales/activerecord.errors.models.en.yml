@@ -1,0 +1,10 @@
+en:
+  activerecord:
+    errors:
+      models:
+        product:
+          attributes:
+            sku:
+              must_match_sku_format: must be something like '1234-electronics'
+            weight:
+              clothing_too_heavy: clothing may not weigh more than 1kg
